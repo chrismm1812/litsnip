@@ -1,10 +1,22 @@
-# Littéraire
+# litsnip
 
 Standalone macOS desktop app for cross-lingual semantic search over the
-classic-literature index at `~/Projects/french-lit` (46 works in French,
-German, English, Latin, ancient Greek). Successor to the Glaze-built
-prototype — plain Electron, no framework dependency, fully local, zero API
-tokens.
+classic-literature index at `~/Projects/french-lit` (47 works in French,
+German, English, Latin, ancient Greek). Successor to the deprecated
+Glaze-built "Littéraire" prototype — plain Electron, no framework
+dependency, fully local, zero API tokens.
+
+Repo: https://github.com/chrismm1812/litsnip — voices and models are not
+committed; after cloning run `scripts/get_voices.sh` (Piper voices) and
+point `LIT_DB_PATH` at an index (or ship `index_compact/`, 40 MB).
+
+## Adding books from the app
+The **Add book** button searches Project Gutenberg (via Gutendex), shows
+candidates with download counts, and one click downloads, registers,
+chunks, embeds (locally, a few minutes) and hot-reloads the index — the
+book is searchable immediately, no restart. Books not on Gutenberg
+(Wikisource, Perseus, The Latin Library) still go through a Claude session
+with the `lit-corpus` skill, which knows those sources' quirks.
 
 ## Features
 - **Search in any language**, filter by corpus language / genre / author.
