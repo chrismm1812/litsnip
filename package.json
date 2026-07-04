@@ -1,0 +1,53 @@
+{
+  "name": "litsnip",
+  "productName": "litsnip",
+  "version": "1.0.0",
+  "description": "Cross-lingual semantic search over classic literature — local, zero tokens",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.chrisden.litsnip",
+    "productName": "litsnip",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/",
+      "python/",
+      "voices/"
+    ],
+    "asarUnpack": [
+      "python/**",
+      "voices/**"
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "assets/litsnip.icns",
+      "category": "public.app-category.utilities"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150,
+          "type": "file"
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}

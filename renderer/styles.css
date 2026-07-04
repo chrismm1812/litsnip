@@ -1,0 +1,104 @@
+/* Littéraire — dark literary theme. Fonts stay on the system stack:
+   SF Pro / New York have full polytonic Greek coverage, so Marcus Aurelius
+   renders correctly with no webfont gamble. */
+:root {
+  --bg: #161412;
+  --card: #201d1a;
+  --ink: #e8e2d9;
+  --muted: #9a8f80;
+  --accent: #c9a227;   /* old gold */
+  --accent-dim: #8a6f1e;
+  --serif: "New York", Georgia, "Times New Roman", serif;
+  --sans: -apple-system, "SF Pro Text", Helvetica, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { background: var(--bg); color: var(--ink); font-family: var(--sans); }
+#titlebar { height: 38px; -webkit-app-region: drag; }
+
+header { text-align: center; padding: 0 24px 18px; }
+header h1 { font-family: var(--serif); font-size: 34px; font-weight: 500; letter-spacing: 0.5px; }
+.tagline { color: var(--muted); font-size: 12.5px; margin-top: 4px; }
+
+#controls { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+.row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.spacer { flex: 1; }
+#query { flex: 1; font-size: 16px; padding: 12px 16px; border-radius: 10px;
+         border: 1px solid #3a352f; background: var(--card); color: var(--ink); }
+#query:focus { outline: none; border-color: var(--accent-dim); }
+button { font-size: 14px; padding: 10px 18px; border-radius: 9px; border: none;
+         background: var(--accent); color: #1c1911; font-weight: 600; cursor: pointer; }
+button:hover { filter: brightness(1.1); }
+button:disabled { opacity: 0.45; cursor: default; }
+.filters select, .filters input, .filters label {
+  font-size: 13px; color: var(--ink); }
+.filters select, .filters input {
+  padding: 7px 10px; border-radius: 8px; border: 1px solid #3a352f; background: var(--card); }
+.filters label { color: var(--muted); }
+#author { width: 150px; }
+#topk { width: 58px; }
+button.ghost { background: #35302a; color: var(--ink); font-weight: 500; }
+
+#history-panel { max-width: 860px; margin: 0 auto 14px; padding: 6px 24px; }
+.hist-entry { display: flex; gap: 12px; align-items: baseline; padding: 8px 14px;
+              border-radius: 8px; cursor: pointer; color: var(--ink); }
+.hist-entry:hover { background: var(--card); }
+.hist-entry .ts { color: var(--muted); font-size: 11.5px; white-space: nowrap; }
+.hist-entry .q { font-family: var(--serif); font-size: 14.5px; flex: 1;
+                 overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hist-entry .meta { color: var(--muted); font-size: 11.5px; white-space: nowrap; }
+.hist-head { display: flex; justify-content: space-between; align-items: center;
+             padding: 4px 14px 10px; color: var(--muted); font-size: 12px; }
+.hist-head button { font-size: 12px; padding: 5px 12px; }
+.hist-del { background: none; border: none; color: var(--muted); font-size: 16px;
+            padding: 0 6px; line-height: 1; cursor: pointer; }
+.hist-del:hover { color: #d97b66; background: none; filter: none; }
+
+#status { text-align: center; color: var(--muted); font-size: 13px; padding: 10px; min-height: 34px; }
+#status.error { color: #d97b66; }
+
+main { max-width: 860px; margin: 0 auto; padding: 0 24px 60px; }
+.hit { background: var(--card); border: 1px solid #2c2823; border-radius: 12px;
+       padding: 18px 20px; margin-bottom: 14px; }
+.hit .cite { font-family: var(--serif); color: var(--accent); font-size: 14.5px; margin-bottom: 10px; }
+.hit .cite .rel { color: var(--muted); font-family: var(--sans); font-size: 11.5px; float: right; }
+.hit .text { font-family: var(--serif); font-size: 16.5px; line-height: 1.62; white-space: pre-wrap; }
+.hit .actions { margin-top: 12px; display: flex; gap: 8px; }
+.hit .actions button { font-size: 12.5px; padding: 6px 12px; background: #35302a; color: var(--ink); }
+.hit .actions button:hover { background: #453e35; }
+.hit .translation { margin-top: 12px; padding: 12px 14px; border-left: 3px solid var(--accent-dim);
+       background: #1b1916; font-family: var(--serif); font-size: 15.5px; line-height: 1.6;
+       color: #cfc6b8; white-space: pre-wrap; }
+.hit .translation .tlabel { font-family: var(--sans); font-size: 11px; color: var(--muted);
+       text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 6px; }
+
+#addbook-panel { max-width: 860px; margin: 0 auto 14px; padding: 6px 24px; }
+#addbook-panel input, #addbook-panel select {
+  padding: 8px 12px; border-radius: 8px; border: 1px solid #3a352f;
+  background: var(--card); color: var(--ink); font-size: 13.5px; }
+#book-query { flex: 1; }
+#book-results { margin-top: 8px; color: var(--muted); font-size: 13px; }
+.book-row { display: flex; gap: 10px; align-items: center; padding: 9px 12px;
+            border-radius: 8px; }
+.book-row:hover { background: var(--card); }
+.book-info { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.book-title { font-family: var(--serif); font-size: 14.5px; color: var(--ink);
+              overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.book-meta { color: var(--muted); font-size: 11.5px; }
+.book-year { width: 70px; }
+.book-row button { font-size: 12.5px; padding: 6px 14px; }
+
+/* karaoke overlay */
+#karaoke { position: fixed; inset: 0; background: rgba(12, 10, 8, 0.94); display: flex;
+           align-items: center; justify-content: center; z-index: 50; }
+#karaoke.hidden { display: none; }
+#karaoke-card { max-width: 780px; width: 90%; max-height: 84vh; display: flex; flex-direction: column;
+                background: var(--card); border: 1px solid #3a352f; border-radius: 16px; padding: 30px 34px; }
+#karaoke-citation { font-family: var(--serif); color: var(--accent); font-size: 15px; margin-bottom: 18px; }
+#karaoke-text { font-family: var(--serif); font-size: 22px; line-height: 1.85; overflow-y: auto; }
+#karaoke-text span { transition: color 0.12s, background 0.12s; border-radius: 4px; padding: 0 2px; }
+#karaoke-text span.said { color: var(--muted); }
+#karaoke-text span.now { background: var(--accent); color: #1c1911; }
+#karaoke-bar { display: flex; gap: 10px; align-items: center; margin-top: 22px; }
+#karaoke-bar button { font-size: 13px; padding: 8px 14px; }
+#karaoke-close { background: #35302a; color: var(--ink); }
+#karaoke-note { color: var(--muted); font-size: 12px; }

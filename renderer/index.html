@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Littéraire</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="titlebar"></div>
+  <header>
+    <h1>Littéraire</h1>
+    <p class="tagline">46 works · 5 languages · one semantic space · zero tokens</p>
+  </header>
+
+  <section id="controls">
+    <div class="row">
+      <input id="query" type="text" spellcheck="false"
+             placeholder="Ask in any language" />
+      <button id="go">Search</button>
+    </div>
+    <div class="row filters">
+      <select id="language">
+        <option value="">All languages</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="en">English</option>
+        <option value="la">Latina</option>
+        <option value="el">Ἑλληνική</option>
+      </select>
+      <select id="genre">
+        <option value="">Poetry & prose</option>
+        <option value="poetry">Poetry</option>
+        <option value="prose">Prose</option>
+      </select>
+      <input id="author" type="text" placeholder="Author contains…" />
+      <label for="topk">Results</label>
+      <input id="topk" type="number" min="1" max="50" value="8" />
+      <button id="history-btn" class="ghost">History</button>
+      <button id="addbook-btn" class="ghost">Add book</button>
+      <span class="spacer"></span>
+      <label for="voice-engine" data-tier="2">Voice</label>
+      <select id="voice-engine" data-tier="2">
+        <option value="auto">Fast (Piper)</option>
+        <option value="dia">Beautiful (Dia · EN only · slow)</option>
+      </select>
+      <label for="target" data-tier="1">Translate to</label>
+      <select id="target" data-tier="1">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+        <option value="it">Italiano</option>
+      </select>
+    </div>
+  </section>
+
+  <div id="status">Loading models…</div>
+  <div id="history-panel" class="hidden"></div>
+  <div id="addbook-panel" class="hidden">
+    <div class="row">
+      <input id="book-query" type="text" placeholder="Title or author on Project Gutenberg…" />
+      <select id="book-lang">
+        <option value="">Any language</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="en">English</option>
+        <option value="la">Latina</option>
+        <option value="el">Ἑλληνική</option>
+        <option value="it">Italiano</option>
+        <option value="es">Español</option>
+      </select>
+      <button id="book-go">Search Gutenberg</button>
+    </div>
+    <div id="book-results"></div>
+  </div>
+  <main id="results"></main>
+
+  <!-- karaoke overlay -->
+  <div id="karaoke" class="hidden">
+    <div id="karaoke-card">
+      <div id="karaoke-citation"></div>
+      <div id="karaoke-text"></div>
+      <div id="karaoke-bar">
+        <button id="karaoke-replay">Replay</button>
+        <button id="karaoke-export">Export video</button>
+        <span id="karaoke-note"></span>
+        <span class="spacer"></span>
+        <button id="karaoke-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
